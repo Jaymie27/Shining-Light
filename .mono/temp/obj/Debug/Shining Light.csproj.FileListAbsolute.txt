@@ -1,0 +1,9 @@
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\bin\Debug\Shining Light.dll
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\bin\Debug\Shining Light.pdb
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.csproj.AssemblyReference.cache
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.AssemblyInfoInputs.cache
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.AssemblyInfo.cs
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.csproj.CoreCompileInputs.cache
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.dll
+C:\Users\j_des\OneDrive\Documents\Dev_Jeux_video\ShiningLight\.mono\temp\obj\Debug\Shining Light.pdb
