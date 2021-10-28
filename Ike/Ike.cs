@@ -11,6 +11,7 @@ public class Ike : KinematicBody2D
 	const int MAXSPEED = 80;
 	const int ACCELERATION = 500;
 	private int FRICTION = 500;
+	private int life = 10;
 	bool facing_right = true;
 	Sprite currentSprite;
 	AnimationPlayer animationPlayer;
@@ -48,6 +49,11 @@ public class Ike : KinematicBody2D
 			currentSprite.FlipH = false;
 		} else {
 			currentSprite.FlipH = true;
+		}
+		
+		if (life == 0)
+		{
+			
 		}
 		
 		if(input_vector != Vector2.Zero)
