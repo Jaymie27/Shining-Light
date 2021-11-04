@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Ike/Ike.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 
@@ -50,3 +51,12 @@ tile_data = PoolIntArray( 524320, 16, 0 )
 
 [node name="Ike" parent="." instance=ExtResource( 1 )]
 position = Vector2( 69.5686, 64.2172 )
+
+[node name="Bat" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160.509, 69.3948 )
+
+[node name="Bat2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 89.5246, 158.39 )
+
+[node name="Bat3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 250.563, 157.33 )
