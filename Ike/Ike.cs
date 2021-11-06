@@ -88,4 +88,12 @@ public class Ike : KinematicBody2D
 
 		Velocity = MoveAndSlide(Velocity);
 	  }
+	
+	
+	private void _on_ChangeLevelZone_body_entered(object body)
+	{
+		GetTree().ChangeScene("res://level2.tscn");
+	}
+
 }
+

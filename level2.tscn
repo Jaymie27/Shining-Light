@@ -1,12 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Ike/Ike.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ChangeLevelZone.tscn" type="PackedScene" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 83.4533 )
 
 [node name="World" type="Node2D"]
 
@@ -54,7 +50,7 @@ format = 1
 tile_data = PoolIntArray( 524320, 16, 0 )
 
 [node name="Ike" parent="." instance=ExtResource( 1 )]
-position = Vector2( 58.7329, 55.3959 )
+position = Vector2( 326.883, 29.32 )
 
 [node name="Bat" parent="." instance=ExtResource( 3 )]
 position = Vector2( 160.509, 69.3948 )
@@ -64,14 +60,3 @@ position = Vector2( 89.5246, 158.39 )
 
 [node name="Bat3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 250.563, 157.33 )
-
-[node name="ChangeLevelZone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1199.02, -226.3 )
-
-[node name="CollisionShape2D" parent="ChangeLevelZone" index="0"]
-position = Vector2( 0.280762, 0.36319 )
-shape = SubResource( 1 )
-
-[connection signal="body_entered" from="ChangeLevelZone" to="Ike" method="_on_ChangeLevelZone_body_entered"]
-
-[editable path="ChangeLevelZone"]
