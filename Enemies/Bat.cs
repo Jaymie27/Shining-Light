@@ -16,6 +16,7 @@ public class Bat : KinematicBody2D
 	private int ACCELERATION = 300;
 	private int MAX_SPEED = 50;
 	private int FRICTION = 200;
+
 	private state currentState;
 	
 	public Vector2 Velocity;
@@ -23,7 +24,7 @@ public class Bat : KinematicBody2D
 	Area2D playerDetectionZone;
 	KinematicBody2D player;
 	AnimatedSprite aSprite;
-	AudioStreamPlayer2D audioPlayer;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -32,8 +33,6 @@ public class Bat : KinematicBody2D
 		currentState = state.CHASE;
 		playerDetectionZone = GetNode<Area2D>("PlayerDetectionZone");
 		aSprite = GetNode<AnimatedSprite>("AnimatedSprite");
-		audioPlayer = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
-		audioPlayer.Stream = GD.Load<AudioStream>("res://");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -77,10 +76,6 @@ public class Bat : KinematicBody2D
 
 	private void _on_Hurtbox_area_entered(object area)
 	{
-		if(!audioPlayer.Playing())
-		{
-			audioPlayer.play();
-		}
 		this.QueueFree();
 	}
 }

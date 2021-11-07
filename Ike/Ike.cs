@@ -17,6 +17,15 @@ public class Ike : KinematicBody2D
 	AnimationPlayer animationPlayer;
 	AnimationTree animationTree;
 	AnimationNodeStateMachinePlayback animationState;
+
+	[Export]
+	private int score;
+	public int Score
+	{
+		get { return score; }
+		set { score = value; }
+	}
+	
 	
 	
 	
