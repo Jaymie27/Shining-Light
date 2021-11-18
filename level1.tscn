@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 83.4533 )
 
-[node name="World" type="Node2D"]
+[node name="level1" type="Node2D"]
 
 [node name="Grass" type="TileMap" parent="."]
 scale = Vector2( 0.1, 0.1 )

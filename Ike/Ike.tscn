@@ -1,9 +1,11 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Ike/Hooded knight_finalsheet.png" type="Texture" id=1]
 [ext_resource path="res://Ike/Ike.cs" type="Script" id=2]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Ike/Shing.wav" type="AudioStream" id=4]
+[ext_resource path="res://LifeBar/Interface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack Down"
@@ -447,6 +449,10 @@ height = 0.0
 [sub_resource type="CapsuleShape2D" id=35]
 height = 12.0
 
+[sub_resource type="CapsuleShape2D" id=36]
+radius = 4.58288
+height = 16.2414
+
 [node name="Ike" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
@@ -455,7 +461,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 10
 vframes = 15
-frame = 10
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Attack Down" = SubResource( 1 )
@@ -492,6 +498,8 @@ smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
+[node name="Interface" parent="Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+
 [node name="HitboxPivot" type="Position2D" parent="."]
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource( 3 )]
@@ -501,8 +509,20 @@ collision_mask = 8
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2( -0.157486, 1.25992 )
 shape = SubResource( 35 )
+disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="Hurtbox" parent="." instance=ExtResource( 6 )]
+position = Vector2( 13, 0 )
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -13.2907, 1.06826 )
+shape = SubResource( 36 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
 [editable path="HitboxPivot/SwordHitbox"]
+[editable path="Hurtbox"]

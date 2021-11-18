@@ -17,6 +17,7 @@ public class Ike : KinematicBody2D
 	AnimationPlayer animationPlayer;
 	AnimationTree animationTree;
 	AnimationNodeStateMachinePlayback animationState;
+	TextureProgress lifeBar;
 
 	[Export]
 	private int score;
@@ -36,6 +37,7 @@ public class Ike : KinematicBody2D
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		lifeBar = GetNode<TextureProgress>("Camera2D/CanvasLayer/Interface/Bar/TextureProgress");
 	}
 	
 	public Vector2 GetInput()
@@ -104,5 +106,20 @@ public class Ike : KinematicBody2D
 		GetTree().ChangeScene("res://level2.tscn");
 	}
 
+	
+
+	private void _on_Hurtbox_area_entered(Area2D area)
+	{
+		
+	   if(area.IsInGroup("enemyAttack"))
+			{
+				life--;
+				((TextureProgress)(lifeBar)).Value = life;
+			}
+	}
 }
+
+
+
+
 
