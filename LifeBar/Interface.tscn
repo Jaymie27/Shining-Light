@@ -78,6 +78,52 @@ margin_bottom = 68.0
 focus_neighbour_bottom = NodePath("../ResumeButton")
 text = "Quit"
 
+[node name="DirXLabel" type="Label" parent="."]
+visible = false
+margin_left = 30.0
+margin_top = 75.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DirectionX : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirXStat" type="Label" parent="."]
+visible = false
+margin_left = 120.0
+margin_top = 75.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirYLabel" type="Label" parent="."]
+visible = false
+margin_left = 30.0
+margin_top = 100.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DirectionY : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirYStat" type="Label" parent="."]
+visible = false
+margin_left = 120.0
+margin_top = 100.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

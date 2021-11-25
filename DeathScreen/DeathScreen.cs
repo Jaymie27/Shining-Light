@@ -1,23 +1,26 @@
 using Godot;
 using System;
 
-public class EndScreen : Control
+public class DeathScreen : Control
 {
-
+	AudioStreamPlayer audioStreamPlayer;
+	
 	public override void _Ready()
 	{
 		GetNode<Button>("ColorRect/VBoxContainer/RestartButton").GrabFocus();
-	}
-	
-	private void _on_RestartButton_pressed()
-	{
-		GetTree().ChangeScene("res://level1.tscn");
+		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		audioStreamPlayer.Play();
 	}
 
-	
+	private void _on_RestartButton_pressed()
+	{
+	   	GetTree().ChangeScene("res://level1.tscn");
+	}
+
+
 	private void _on_MainMenuButton_pressed()
 	{
-	   GetTree().ChangeScene("res://TitleScreen/TitleScreen.tscn");
+		GetTree().ChangeScene("res://TitleScreen/TitleScreen.tscn");
 	}
 
 
@@ -25,7 +28,6 @@ public class EndScreen : Control
 	{
 		GetTree().Quit();
 	}
-
 }
 
 

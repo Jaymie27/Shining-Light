@@ -5,10 +5,22 @@ public class Interface : Control
 {
 	
 	ColorRect pause_overlay;
+	Label DirXLabel, DirXStat, DirYLabel, DirYStat;
 
 	public override void _Ready()
 	{
 		pause_overlay = GetNode<ColorRect>("ColorRect");
+		DirXLabel = GetNode<Label>("DirXLabel");
+		DirXStat = GetNode<Label>("DirXStat");
+		DirYLabel = GetNode<Label>("DirYLabel");
+		DirYStat = GetNode<Label>("DirYStat");
+	}
+	
+	public override void _PhysicsProcess(float delta)
+	{
+		DirXStat.Text = Ike.DirectionX.ToString();
+		DirYStat.Text = Ike.DirectionY.ToString();
+
 	}
 	
 	private void _on_ResumeButton_pressed()
@@ -38,6 +50,7 @@ public class Interface : Control
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventKey eventKey)
+		{
 			if (eventKey.Pressed && eventKey.Scancode == (int)KeyList.P)
 			{
 				if(GetTree().Paused == false)
@@ -52,7 +65,30 @@ public class Interface : Control
 					pause_overlay.Visible = false;
 				}
 			}
+
+			else if (eventKey.Pressed && eventKey.Scancode == (int)KeyList.I)
+			{
+				if(!DirXStat.Visible)
+				{
+					DirXLabel.Visible = true;
+					DirXStat.Visible = true;
+					DirYLabel.Visible = true;
+					DirYStat.Visible = true;
+				}
+
+				else
+				{
+					DirXLabel.Visible = false;
+					DirXStat.Visible = false;
+					DirYLabel.Visible = false;
+					DirYStat.Visible = false;
+				}
+				
+			}
+		}
+					
 				
 	}
+	
 
 }

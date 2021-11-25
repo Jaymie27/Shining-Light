@@ -3,11 +3,10 @@ using System;
 
 public class Ike : KinematicBody2D
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+
+	[Export]
 	public Vector2 Velocity;
-	
+
 	const int MAXSPEED = 80;
 	const int ACCELERATION = 500;
 	private int FRICTION = 500;
@@ -19,25 +18,33 @@ public class Ike : KinematicBody2D
 	AnimationNodeStateMachinePlayback animationState;
 	TextureProgress lifeBar;
 
-	[Export]
-	private int score;
-	public int Score
-	{
-		get { return score; }
-		set { score = value; }
-	}
+	CollisionShape2D hitbox;
 	
+	public static float DirectionX;
+	public static float DirectionY;
 	
-	
-	
+
+
+	private enum State{
+		MOVE,
+		ATTACK,
+		DEAD
+	};
+
+	State state;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GD.Randomize();
 		currentSprite = GetNode<Sprite>("Sprite");
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		lifeBar = GetNode<TextureProgress>("Camera2D/CanvasLayer/Interface/Bar/TextureProgress");
+		hitbox = GetNode<CollisionShape2D>("HitboxPivot/SwordHitbox/CollisionShape2D");
+		hitbox.Disabled = true;
+		DirectionX = Velocity.x;
+		DirectionY = Velocity.y;
 	}
 	
 	public Vector2 GetInput()
@@ -53,8 +60,26 @@ public class Ike : KinematicBody2D
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	  public override void _PhysicsProcess(float delta)
 	  {
-		  
-		  var input_vector = GetInput();
+		  	checkDeath();
+		switch(state){
+			case State.MOVE:
+				move_state(delta);
+				break;
+			case State.ATTACK:
+				attack_state(delta);
+				break;
+			case State.DEAD:
+				death_state(delta);
+				break;
+
+		}
+		 
+	  }
+	
+
+	private void move_state(float delta)
+	{
+		var input_vector = GetInput();
 		
 		if (facing_right) {
 			currentSprite.FlipH = false;
@@ -62,10 +87,6 @@ public class Ike : KinematicBody2D
 			currentSprite.FlipH = true;
 		}
 		
-		if (life == 0)
-		{
-			
-		}
 		
 		if(input_vector != Vector2.Zero)
 		{
@@ -88,7 +109,8 @@ public class Ike : KinematicBody2D
 			
 			if(Input.IsActionJustReleased("ui_attack"))
 			{
-				animationState.Travel("Attack");
+				state = State.ATTACK;
+			
 			}
 			else
 			{
@@ -96,17 +118,38 @@ public class Ike : KinematicBody2D
 			}
 			Velocity = Velocity.MoveToward(Vector2.Zero, FRICTION * delta);
 		}
-
+		DirectionX = Velocity.x;
+		DirectionY = Velocity.y;
 		Velocity = MoveAndSlide(Velocity);
-	  }
-	
-	
-	private void _on_ChangeLevelZone_body_entered(object body)
-	{
-		GetTree().ChangeScene("res://level2.tscn");
 	}
 
-	
+	private void attack_state(float delta)
+	{
+		Velocity = Vector2.Zero;
+		animationState.Travel("Attack");
+	}
+
+	public void attack_animation_finished()
+	{
+		state = State.MOVE;
+	}
+
+	private void checkDeath()
+	{
+		if (life == 0)
+		{
+			state = State.DEAD;
+		}
+	}
+		private void death_state(float delta)
+	{
+		animationState.Travel("Death");
+	}
+
+	private void death_animation_finished()
+	{
+		GetTree().ChangeScene("res://DeathScreen/DeathScreen.tscn");
+	}
 
 	private void _on_Hurtbox_area_entered(Area2D area)
 	{

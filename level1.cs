@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-public class level2 : Node2D
+public class level1 : Node2D
 {
+
 	public override void _Ready()
 	{
 		
@@ -10,7 +11,7 @@ public class level2 : Node2D
 	
 	private void _on_ChangeLevelZone_area_entered(Area2D area)
 	{
-		GetTree().ChangeScene("res://EndScreen.tscn");
+	   GetTree().ChangeScene("res://level2.tscn");
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -19,7 +20,7 @@ public class level2 : Node2D
 		{
 			if (eventKey.Pressed && eventKey.Scancode == (int)KeyList.L)
 			{
-				 GetTree().ChangeScene("res://EndScreen.tscn");
+				 GetTree().ChangeScene("res://level2.tscn");
 			}
 	
 		}
