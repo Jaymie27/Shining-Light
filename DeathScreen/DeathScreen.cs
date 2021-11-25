@@ -4,12 +4,17 @@ using System;
 public class DeathScreen : Control
 {
 	AudioStreamPlayer audioStreamPlayer;
+
+	public static bool soundDisabled = false;
 	
 	public override void _Ready()
 	{
 		GetNode<Button>("ColorRect/VBoxContainer/RestartButton").GrabFocus();
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
-		audioStreamPlayer.Play();
+		if(!soundDisabled)
+		{
+			audioStreamPlayer.Play();
+		}
 	}
 
 	private void _on_RestartButton_pressed()

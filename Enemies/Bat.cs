@@ -28,7 +28,6 @@ public class Bat : KinematicBody2D
 	List<state> states = new List<state>{state.IDLE, state.WANDER};
 
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Velocity = Vector2.Zero;
@@ -38,7 +37,6 @@ public class Bat : KinematicBody2D
 		wanderController = GetNode<WanderController>("WanderController");
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _PhysicsProcess(float delta)
   {
 	switch (currentState)

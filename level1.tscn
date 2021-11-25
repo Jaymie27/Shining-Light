@@ -67,8 +67,39 @@ position = Vector2( 89.5246, 158.39 )
 [node name="Bat3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 250.563, 157.33 )
 
+[node name="Bat4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 438.458, 101.437 )
+
+[node name="Bat5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 387.322, -47.2136 )
+
+[node name="Bat6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 533.594, -88.8358 )
+
+[node name="Bat7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 506.242, -236.297 )
+
+[node name="Bat8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 376.619, 257.223 )
+
+[node name="Bat9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 696.516, -237.487 )
+
+[node name="Bat10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 786.895, -210.135 )
+
+[node name="Bat11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 852.302, -254.136 )
+
+[node name="Bat12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 899.87, -207.756 )
+
+[node name="Bat13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 974.79, -256.514 )
+
 [node name="ChangeLevelZone" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1199.02, -226.3 )
+collision_mask = 4
 
 [node name="CollisionShape2D" parent="ChangeLevelZone" index="0"]
 position = Vector2( 0.280762, 0.36319 )

@@ -9,9 +9,10 @@ public class level1 : Node2D
 		
 	}
 	
+	
 	private void _on_ChangeLevelZone_area_entered(Area2D area)
 	{
-	   GetTree().ChangeScene("res://level2.tscn");
+		   GetTree().ChangeScene("res://level2.tscn");
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -29,6 +30,7 @@ public class level1 : Node2D
 	}
 
 }
+
 
 
 

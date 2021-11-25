@@ -5,7 +5,7 @@ public class Interface : Control
 {
 	
 	ColorRect pause_overlay;
-	Label DirXLabel, DirXStat, DirYLabel, DirYStat;
+	Label DirXLabel, DirXStat, DirYLabel, DirYStat, FPSLabel, FPSStat;
 
 	public override void _Ready()
 	{
@@ -14,13 +14,15 @@ public class Interface : Control
 		DirXStat = GetNode<Label>("DirXStat");
 		DirYLabel = GetNode<Label>("DirYLabel");
 		DirYStat = GetNode<Label>("DirYStat");
+		FPSLabel = GetNode<Label>("FPSLabel");
+		FPSStat = GetNode<Label>("FPSStat");
 	}
 	
 	public override void _PhysicsProcess(float delta)
 	{
 		DirXStat.Text = Ike.DirectionX.ToString();
 		DirYStat.Text = Ike.DirectionY.ToString();
-
+		FPSStat.Text = Engine.GetFramesPerSecond().ToString();
 	}
 	
 	private void _on_ResumeButton_pressed()
@@ -74,6 +76,8 @@ public class Interface : Control
 					DirXStat.Visible = true;
 					DirYLabel.Visible = true;
 					DirYStat.Visible = true;
+					FPSLabel.Visible = true;
+					FPSStat.Visible = true;
 				}
 
 				else
@@ -82,6 +86,8 @@ public class Interface : Control
 					DirXStat.Visible = false;
 					DirYLabel.Visible = false;
 					DirYStat.Visible = false;
+					FPSLabel.Visible = false;
+					FPSStat.Visible = false;
 				}
 				
 			}

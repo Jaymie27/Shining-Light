@@ -62,9 +62,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="SoundButton" type="Button" parent="ColorRect/VBoxContainer"]
 margin_right = 150.0
 margin_bottom = 20.0
+focus_neighbour_top = NodePath("../BackButton")
+text = "Disable Death Sound"
+
+[node name="BackButton" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 24.0
+margin_right = 150.0
+margin_bottom = 44.0
+focus_neighbour_bottom = NodePath("../SoundButton")
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,4 +132,5 @@ margin_bottom = 14.0
 custom_fonts/font = SubResource( 6 )
 text = "Skip to next Level : L"
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/SoundButton" to="." method="_on_SoundButton_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
